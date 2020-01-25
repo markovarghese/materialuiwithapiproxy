@@ -1,3 +1,24 @@
+# Material UI with reverse Proxy for APIs
+
+## Northstar
+
+Dockerised react app with a reverse proxy so that the whole thing can be deployed off a single hostname without worryinng about CORS issues etc.
+
+## Current Status
+Dockerised react app built for production
+No reverse proxy set up
+
+## How to use
+- Run `docker build -f Dockerfile.prod -t materialuiwithapiproxy .`
+- Run `docker run -it -p 3000:80 --rm materialuiwithapiproxy`
+- Browse to http://localhost:3000
+
+https://order.chuys.com/basket/joingroup/24755be0-5154-4c8d-8241-e7ea7ecbb629
+
+Material Dashboard's documentation below ...
+
+---
+
 # [Material Dashboard React](https://demos.creative-tim.com/material-dashboard-react/#/dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fcreativetimofficial.github.io%2Fmaterial-dashboard-react&text=Material%20Dashboard%20React%20-%20Free%20Bootstrap%20Admin%20Template&original_referer=https%3A%2F%2Fdemos.creative-tim.com%2Fmaterial-dashboard-react%2F%3F_ga%3D2.10428917.198078103.1532329372-1803433978.1528781151&via=creativetim&hashtags=react%2Cmaterial-ui)
 
 
