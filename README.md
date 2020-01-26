@@ -1,17 +1,12 @@
 # Material UI with reverse Proxy for APIs
 
-## Northstar
-
 Dockerised react app with a reverse proxy so that the whole thing can be deployed off a single hostname without worryinng about CORS issues etc.
-
-## Current Status
-Dockerised react app built for production
-No reverse proxy set up
 
 ## How to use
 - Run `docker build -f Dockerfile.prod -t materialuiwithapiproxy .`
 - Run `docker run -it -p 3000:80 --rm materialuiwithapiproxy`
-- Browse to http://localhost:3000
+- Browse to http://localhost:3000 to get to the react website
+- Browse to http://localhost:3000/github/ to access the APIs at https://api.github.com/
 
 https://order.chuys.com/basket/joingroup/24755be0-5154-4c8d-8241-e7ea7ecbb629
 
