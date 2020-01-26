@@ -3,12 +3,11 @@
 Dockerised react app with a reverse proxy so that the whole thing can be deployed off a single hostname without worryinng about CORS issues etc.
 
 ## How to use
-- Run `docker build -f Dockerfile.prod -t materialuiwithapiproxy .`
-- Run `docker run -it -p 3000:80 --rm materialuiwithapiproxy`
+- Run `./install.sh`
 - Browse to http://localhost:3000 to get to the react website
 - Browse to http://localhost:3000/github/ to access the APIs at https://api.github.com/
 
-https://order.chuys.com/basket/joingroup/24755be0-5154-4c8d-8241-e7ea7ecbb629
+> Note that even though we set `REACT_APP_API_HOSTURL="https://api.github.com"` , the React App will read `process.env.REACT_APP_API_HOSTURL` as `/github`, thanks to the code in the Dockerfile.prod
 
 Material Dashboard's documentation below ...
 

@@ -39,7 +39,7 @@ import RTLPage from "views/RTLPage/RTLPage.js";
 const dashboardRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "Dashboard - " + process.env.REACT_APP_API_HOSTURL,
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,

@@ -1,8 +1,8 @@
 # from https://mherman.org/blog/dockerizing-a-react-app/
 # build environment
 FROM node:12.2.0-alpine as build
-# put arguments here. see examples below
-# ARG REACT_APP_API_HOSTURL
+# put arguments here.
+ARG REACT_APP_API_HOSTURL
 # ARG REACT_APP_OKTA_CLIENT_ID
 # ARG REACT_APP_OKTA_ORG_URL
 WORKDIR /app
@@ -13,12 +13,16 @@ RUN npm install
 # The line below was in https://mherman.org/blog/dockerizing-a-react-app, but seems to be unnecessary for this current package
 # RUN npm install react-scripts@3.1.0 -g
 COPY . /app
+# reverse proxy the API url, and let react use the proxied Url
+RUN sed -i -e "s#proxy_pass .*#proxy_pass $REACT_APP_API_HOSTURL;#"g /app/nginx/nginx.conf
+ENV REACT_APP_API_HOSTURL="/github"
 RUN npm run build
 
 # production environment
 FROM nginx:1.16.0-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
+# COPY nginx/nginx.conf /etc/nginx/conf.d
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
